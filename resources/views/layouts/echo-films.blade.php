@@ -7,7 +7,7 @@
           @break
         @endif
         <td>
-            <a href="{{ route('takeFilm', ['filmName' => $films[$count]->film_name]) }}">
+            <a href="{{ route('takeFilm', ['filmName' => $films[$count]->film_uri]) }}">
               <img src='/public/images/posters/<? echo $films[$count++]->poster ?>' width=100px height=auto>
             </a>
         </td>

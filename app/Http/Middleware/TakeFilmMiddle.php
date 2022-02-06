@@ -17,7 +17,8 @@ class TakeFilmMiddle
     public function handle(Request $request, Closure $next)
     {
       $inputName = $request->filmName;
-      $correctName = str_replace([' ', ':'], '-', $inputName);
+      $correctName = str_replace(' ', '-', $inputName);
+      $correctName = preg_replace('/[:?,\"]/', '', $correctName);
       if($inputName != $correctName)
       {
         return redirect()->route('takeFilm', ['filmName' => $correctName]);

@@ -35,7 +35,8 @@ class FilmsController extends Controller
   public function TakeFilm($filmName)
   {
     $filmName = str_replace('-', ' ', $filmName);
-    $film = FilmsModel::where('film_name', '=', $filmName)->first();
+
+    $film = FilmsModel::where('film_uri', '=', $filmName)->first();
     if(Auth::check())
     {
       $login = Auth::user()->login;
