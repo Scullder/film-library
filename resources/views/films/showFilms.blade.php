@@ -1,5 +1,5 @@
-@extends('layouts.echo-films')
-@section('links')
-  <a href="{{ route('films', ['page' => $prev])}}">prev</a>
-  <a href="{{ route('films', ['page' => $next])}}">next</a>
+@extends('layouts.app')
+@section('title', 'Фильмы')
+@section('body')
+  @include('layouts.echo-films', ['prev' => $prev, 'next' => $next])
 @endsection

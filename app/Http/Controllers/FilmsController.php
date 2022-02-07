@@ -11,15 +11,6 @@ class FilmsController extends Controller
 {
   public function ShowFilms($page = 1)
   {
-    /*
-    // ниже четырёх не ставить
-    $filmsOnPage = 4;
-    $films = FilmsModel::simplePaginate($filmsOnPage, ['poster', 'film_name'], "p");
-    // подсчёт размера строки и размера столбца
-    $colCount = ceil(count($films) / 2);
-    $rowCount = count($films) - $colCount;
-    */
-
     $filmsTable = $this->CreateTable(20, $page);
     if($filmsTable->prev == 0)
       $filmsTable->prev = $page;
@@ -29,14 +20,12 @@ class FilmsController extends Controller
                                     'prev' => $filmsTable->prev,
                                     'next' => $filmsTable->next,
                                     'page' => $page]);
-
   }
 
-  public function TakeFilm($filmName)
+  public function TakeFilm($filmUri)
   {
-    $filmName = str_replace('-', ' ', $filmName);
-
-    $film = FilmsModel::where('film_uri', '=', $filmName)->first();
+    //$filmName = str_replace('-', ' ', $filmName);
+    $film = FilmsModel::where('film_uri', '=', $filmUri)->first();
     if(Auth::check())
     {
       $login = Auth::user()->login;
@@ -80,7 +69,6 @@ class FilmsController extends Controller
     //$routeName = Route::currentRouteName();
     //$link = "<a href=" . route($routeName, ['action' => 'films', 'page' => 1]) . ">prev</a>";
 
-
     // расчёт колличества столбцов и строк
     if(count($films) > 6)
     {
@@ -111,4 +99,5 @@ class FilmsController extends Controller
       }
     };
   }
+
 }

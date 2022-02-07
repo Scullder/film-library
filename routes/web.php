@@ -27,7 +27,7 @@ Route::get('/', function(){
 Route::get('/films/{page?}', [FilmsController::class, 'ShowFilms'])->name('films');
 
 Route::group(['prefix' => 'film'], function(){
-  Route::get('/{filmName}', [FilmsController::class, 'TakeFilm'])->middleware('check')->name('takeFilm');
+  Route::get('/{filmName}', [FilmsController::class, 'TakeFilm'])->name('takeFilm');
   Route::post('/like', [UserController::class, 'Like'])->name('filmLike');
   Route::post('/watch', [UserController::class, 'Watch'])->name('filmWatch');
   Route::post('/list', [UserController::class, 'List'])->name('filmList');
@@ -48,7 +48,6 @@ Route::middleware('login')->group(function(){
   Route::get('/profile/{action?}/{page?}', [ProfileController::class, 'profile'])->name('profile');
   Route::post('/profile/rating', [UserController::class, 'rating'])->name('newRate');
 });
-
 
 Route::post('/login/submit', [LoginController::class, 'login'])->name('login');
 Route::post('/registr/submit', [LoginController::class, 'registr'])->name('registr');
