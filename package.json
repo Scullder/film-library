@@ -10,12 +10,18 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@babel/core": "^7.17.2",
+        "@babel/preset-env": "^7.16.11",
         "axios": "^0.21",
+        "babel-loader": "^8.2.3",
+        "babel-plugin-transform-class-properties": "^6.24.1",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "webpack": "^5.68.0"
     },
     "dependencies": {
+        "babel-preset-stage-2": "^6.24.1",
         "jquery": "^3.6.0"
     }
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\FilmsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AjaxController;
+
 
 use App\Http\Middleware\Login;
 
@@ -51,3 +53,7 @@ Route::middleware('login')->group(function(){
 
 Route::post('/login/submit', [LoginController::class, 'login'])->name('login');
 Route::post('/registr/submit', [LoginController::class, 'registr'])->name('registr');
+
+
+Route::post('/ajax/add', [AjaxController::class, 'addComment']);
+Route::post('/ajax/load', [AjaxController::class, 'loadComment']);
