@@ -66,8 +66,8 @@
     }
 
     $(document).ready(function(){
-        //setInterval(load_comment, 3000);
-        load_comment();
+        setInterval(load_comment, 5000);
+        //load_comment();
     })
 
 

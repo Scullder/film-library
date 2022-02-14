@@ -26,28 +26,6 @@ class FilmsController extends Controller
 
   public function TakeFilm($filmUri)
   {
-    $tokens = [ "02b18df88abb5f93dbad2e26150e9779",
-                "2f1aa2b0d8095ab2a8b19ba7c9f0b078",
-                "47d28488fc7d94c8c0f878466ceb2935",
-                "b587b9122d42873b4989b366213b5a7e",
-                "c7fcbb971c5e42665207c10041739bb8",
-                "cd294a89bc2a03223ff642bc9ff44908"];
-    $tokensString = implode(',', $tokens);
-    echo $tokensString;
-    $tokensSelected = DB::select('select login, review, review_token as token from reviews
-                                where review_token not in(?) and film_id = ?', [$tokensString, 1]);
-
-    $tokens = [];
-    $reviews = [];
-    foreach($tokensSelected as $obj)
-    {
-      $tokens[] = $obj->token;
-      $reviews[] = $obj->review;
-    }
-
-    print_r(array_combine($tokens, $reviews));
-
-    //$filmName = str_replace('-', ' ', $filmName);
     $film = FilmsModel::where('film_uri', '=', $filmUri)->first();
     $reviews = $this->SelectAllReviews($film->id);
 

@@ -61,11 +61,13 @@
 
   <div id="comments-list">
     @if($film->reviews !== '')
+    
       @foreach($reviews as $review)
         <div class="loaded-comments" id="{{$review->review_token}}">
           {{ $review->review }}
         </div>
       @endforeach
+
     @endif
   </div>
 

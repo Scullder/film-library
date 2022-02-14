@@ -46,7 +46,6 @@ Route::get('/registr', function(){
 
 Route::middleware('login')->group(function(){
   Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-  // юзерский профиль !!!!
   Route::get('/profile/{action?}/{page?}', [ProfileController::class, 'profile'])->name('profile');
   Route::post('/profile/rating', [UserController::class, 'rating'])->name('newRate');
 });
